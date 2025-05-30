@@ -20,7 +20,9 @@ while cap.isOpened():
         print("Can't receive frame (stream end?). Exiting ...")
         break
     # write the frame
+    
     out.write(frame)
+    frame = cv.flip(frame, 1)
     cv.imshow('frame', frame)
     if cv.waitKey(1) == ord('q'):
         break
