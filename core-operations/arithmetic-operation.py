@@ -11,12 +11,10 @@ roi = img1[0:rows, 0:cols]
 
 img2gray = cv.cvtColor(img2,cv.COLOR_BGR2GRAY)
 ret, mask = cv.threshold(img2gray, 10, 255, cv.THRESH_BINARY)
-cv.imshow('mask',mask);
 mask_inv = cv.bitwise_not(mask)
-
+cv.imshow('mask original',mask)
 # Now black-out the area of logo in ROI
 img1_bg = cv.bitwise_and(roi,roi,mask = mask_inv)
- 
 # Take only region of logo from logo image.
 img2_fg = cv.bitwise_and(img2,img2,mask = mask)
  
